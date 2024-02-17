@@ -40,3 +40,11 @@ EC2 public Ip :8081
 Note:-  Make Sure Your Ec2 Inbound rule allowed to 8081 port 
 
 ![alt text](image.png)
+
+-------
+
+If we want to Run in Local Machine By using Minikube PL refer below Repo
+
+```
+https://github.com/chaitanya-online/minikube-windows
+```
