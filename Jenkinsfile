@@ -1,9 +1,6 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCOUNT_ID = "325196226102"
-        REGION = "ap-south-1"
-        REPO_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/python-server"
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_REGISTRY_CREDENTIALS = 'dockerauth'
     }
@@ -21,7 +18,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        docker build -t richeb/python-server .
+                        docker build -t richeb/2048-game .
                     """
                 }
             }
@@ -33,7 +30,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDENTIALS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh """
                         docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                        docker push richeb/python-server
+                        docker push richeb/2048-game
                         """
                     }
                 }
